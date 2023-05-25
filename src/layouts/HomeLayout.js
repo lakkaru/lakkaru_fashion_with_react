@@ -1,18 +1,20 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import HeaderMenuLayout from "./homeLayout/HeaderMenuLayout";
+
 import HomeCarousel from "./homeLayout/HomeCarousel";
 import HomeBigButtons from "./homeLayout/HomeBigButtons";
-import FooterLayout from "./homeLayout/FooterLayout";
+
+import HeaderMenuLayout from "./common/HeaderMenuLayout";
+import FooterLayout from "./common/FooterLayout";
 
 export default function HomeLayout() {
   return (
     <>
-      <HeaderMenuLayout />
+      <HeaderMenuLayout/>
       <HomeCarousel />
       <Typography sx={{pt:2}}>Sri Lankan Largest Fashion center</Typography>
       <HomeBigButtons></HomeBigButtons>
-      <FooterLayout />
+      <FooterLayout/>
     </>
   );
 }

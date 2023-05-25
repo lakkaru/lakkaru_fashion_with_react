@@ -34,7 +34,7 @@ export default function SliderComponent({ image, isButtonVisible }) {
         </div>
       </div>}
       
-      <img src={image} alt="fashion photo" width={"100%"} />
+      <img src={image} alt="fashion" width={"100%"} />
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default function HomeCarouesl() {
         {imageList.map((val, key) => {
           return (
             <Slide key={key} index={key}>
-              <SliderComponent image={val} isButtonVisible={key%2==0}/>
+              <SliderComponent image={val} isButtonVisible={key%2===0}/>
             </Slide>
           );
         })}
