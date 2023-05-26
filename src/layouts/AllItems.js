@@ -9,7 +9,7 @@ export default function AllItems() {
   return (
     <Grid>
       <HeaderMenuLayout />
-      <Grid container>
+      <Grid container sx={{p:2}}>
         <Grid item xs={2}>
           <ProductFilters />
         </Grid>
