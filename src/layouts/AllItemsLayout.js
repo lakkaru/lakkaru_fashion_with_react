@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import HeaderMenuLayout from "./common/HeaderMenuLayout";
-import FooterLayout from "./common/FooterLayout";
 import { Box, Grid, Typography } from "@mui/material";
 import ProductFilters from "./allItems/ProductFilters";
 import ProductList from "./allItems/ProductList";
 import axios from "axios";
+import CommonWraperLayout from "./common/CommonWraperLayout";
 
 export default function AllItemsLayout() {
   const [loadingStatus, setLodingStatus] = useState("notStarted");
@@ -26,7 +25,7 @@ export default function AllItemsLayout() {
   }, []);
   return (
     <Grid>
-      <HeaderMenuLayout />
+      <CommonWraperLayout>
       <Grid container sx={{ p: 2 }}>
         <Grid item xs={2}>
           <ProductFilters />
@@ -49,7 +48,7 @@ export default function AllItemsLayout() {
           )}
         </Grid>
       </Grid>
-      <FooterLayout />
+      </CommonWraperLayout>
     </Grid>
   );
 }
