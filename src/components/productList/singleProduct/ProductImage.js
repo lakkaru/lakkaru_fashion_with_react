@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
 
-export default function ProductImage() {
-  const images = [
-    "https://radikadilanka.com/rdfashion/static/media/product7.930e47ba.jpg",
-    "https://radikadilanka.com/rdfashion/static/media/product107.39094bc5.jpg",
-  ];
+export default function ProductImage({images}) {
+  
 
   const [image, setImage] = useState(images[0]);
   return (
-    <Box sx={{ p: 1 }}>
+    <Box sx={{ p: 3 }}>
       <img
         src={image}
         alt="product _image"
-        width="75%"
+        width="100%"
         height="auto"
         onMouseEnter={() => setImage(images[1])}
         onMouseLeave={() => setImage(images[0])}
