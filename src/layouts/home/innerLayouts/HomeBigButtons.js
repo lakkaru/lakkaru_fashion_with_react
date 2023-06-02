@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
 
 const imageWidth='20%';
 const images = [
@@ -95,17 +98,24 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 export default function HomeBigButtons() {
+  const maxWidth1324 = useMediaQuery('(max-width:1324px)');
+  const maxWidth1026 = useMediaQuery('(max-width:1026px)');
+  let imageWidth='20%';
+  maxWidth1324?(maxWidth1026?imageWidth='35%':imageWidth="25%"):imageWidth="20%";
+  
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%', justifyContent:'center' }}>
+    <Grid container sx={{flexWrap: 'wrap',  width: '100%', justifyContent:'center' }}>
       {images.map((image) => (
+        
         <ImageButton
           focusRipple
           key={image.title}
           style={{
             margin:'2%',
-            width: image.width,
-           
+            width: imageWidth,
+           height:'250px'
           }}
+          
         >
           <ImageSrc style={{ backgroundImage: `url(${image.url})`,borderRadius:'20px', border:'7px solid #d9d9d9' }} />
           <ImageBackdrop className="MuiImageBackdrop-root" style={{borderRadius:'20px'}}/>
@@ -116,6 +126,8 @@ export default function HomeBigButtons() {
               color="inherit"
               style={{borderRadius:'120px'}}
               sx={{
+                fontSize:'2rem',
+                fontWeight:'500',
                 position: 'relative',
                 p: 4,
                 pt: 2,
@@ -128,6 +140,6 @@ export default function HomeBigButtons() {
           </Image>
         </ImageButton>
       ))}
-    </Box>
+    </Grid>
   );
 }

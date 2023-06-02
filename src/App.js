@@ -8,8 +8,8 @@ import {Home, Details, AllItems} from './layouts/layouts'
 function App() {
   return (
     <div className="App">
-      {/* <Home/> */}
-     <AllItems/>
+      <Home/>
+     {/* <AllItems/> */}
      {/* <Details/>  */}
     </div>
   );

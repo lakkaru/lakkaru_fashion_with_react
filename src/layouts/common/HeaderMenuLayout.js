@@ -33,7 +33,7 @@ function HeaderMenuLayout() {
       <Container>
       <Navbar.Brand href="#home">
             <img
-              src="logo.png"
+              src='../../logo.png'
               width="30"
               height="30"
               className="d-inline-block align-top"
