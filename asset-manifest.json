@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/lakkaru_fashion_with_react/static/css/main.095b68a3.css",
-    "main.js": "/lakkaru_fashion_with_react/static/js/main.3953a8e6.js",
+    "main.css": "/lakkaru_fashion_with_react/static/css/main.d6d41858.css",
+    "main.js": "/lakkaru_fashion_with_react/static/js/main.cdf5223c.js",
     "static/js/787.6b88c7f2.chunk.js": "/lakkaru_fashion_with_react/static/js/787.6b88c7f2.chunk.js",
     "index.html": "/lakkaru_fashion_with_react/index.html",
-    "main.095b68a3.css.map": "/lakkaru_fashion_with_react/static/css/main.095b68a3.css.map",
-    "main.3953a8e6.js.map": "/lakkaru_fashion_with_react/static/js/main.3953a8e6.js.map",
+    "main.d6d41858.css.map": "/lakkaru_fashion_with_react/static/css/main.d6d41858.css.map",
+    "main.cdf5223c.js.map": "/lakkaru_fashion_with_react/static/js/main.cdf5223c.js.map",
     "787.6b88c7f2.chunk.js.map": "/lakkaru_fashion_with_react/static/js/787.6b88c7f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.095b68a3.css",
-    "static/js/main.3953a8e6.js"
+    "static/css/main.d6d41858.css",
+    "static/js/main.cdf5223c.js"
   ]
 }
