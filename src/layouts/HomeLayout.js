@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import HomeCarousel from "./homeLayout/HomeCarousel";
-import HomeBigButtons from "./homeLayout/HomeBigButtons";
+import HomeCarousel from "./home/HomeCarousel";
+import HomeBigButtons from "./home/HomeBigButtons";
 import CommonWraperLayout from "./common/CommonWraperLayout";
 
 export default function HomeLayout() {

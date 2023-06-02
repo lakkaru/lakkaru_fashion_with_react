@@ -3,7 +3,7 @@ import HeaderMenuLayout from "./HeaderMenuLayout";
 import FooterLayout from "./FooterLayout";
 import { Box } from "@mui/material";
 
-export default function CommonWraperLayout({ children }) {
+export default function CommonWrapperLayout({ children }) {
   return (
     <div>
       <HeaderMenuLayout />
