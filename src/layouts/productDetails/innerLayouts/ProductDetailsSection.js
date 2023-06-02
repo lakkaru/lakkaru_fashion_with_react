@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import RatingComponent from "../../components/productDetails/RatingComponent";
-import StockStatusChip from "../../components/productDetails/StockStatusChip";
-import PriceComponent from "../../components/productDetails/PriceComponent";
-import StyleSizeRadio from "../../components/productDetails/StyleSizeRadio";
-import ProductNameInDetails from "../../components/productDetails/ProductNameInDetails";
-import ProductDescription from "../../components/productDetails/ProductDescription";
+import RatingComponent from "../../../components/productDetails/RatingComponent";
+import StockStatusChip from "../../../components/productDetails/StockStatusChip";
+import PriceComponent from "../../../components/productDetails/PriceComponent";
+import StyleSizeRadio from "../../../components/productDetails/StyleSizeRadio";
+import ProductNameInDetails from "../../../components/productDetails/ProductNameInDetails";
+import ProductDescription from "../../../components/productDetails/ProductDescription";
 import QuantitySelect from "./productDetailsSection/QuantitySelect";
 import AddToCartButtonSection from "./productDetailsSection/AddToCartButtonSection";
 import { useState } from "react";

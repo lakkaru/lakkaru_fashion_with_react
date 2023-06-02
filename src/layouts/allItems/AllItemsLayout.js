@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import ProductFilters from "./allItems/ProductFilters";
-import ProductList from "./allItems/ProductList";
+import ProductFilters from "./innerLayouts/ProductFilters";
+import ProductList from "./innerLayouts/ProductList";
 import axios from "axios";
-import CommonWraperLayout from "./common/CommonWraperLayout";
+import CommonWrapperLayout from "../common/CommonWrapperLayout";
 
 export default function AllItemsLayout() {
-  const [loadingStatus, setLodingStatus] = useState("notStarted");
+  const [loadingStatus, setLoadingStatus] = useState("notStarted");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setLodingStatus("loading");
+    setLoadingStatus("loading");
     axios
       .get("https://cdn.radikadilanka.com:9000/getProducts")
-      .then((responce) => {
-        setLodingStatus("completed");
-        setProducts(responce.data);
-        // console.log(responce.data);
+      .then((response) => {
+        setLoadingStatus("completed");
+        setProducts(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
-        setLodingStatus("error");
+        setLoadingStatus("error");
         console.log(e);
       });
   }, []);
   return (
     <Grid>
-      <CommonWraperLayout>
+      <CommonWrapperLayout>
       <Grid container sx={{ p: 2 }}>
-        <Grid item xs={2}>
+        <Grid item xs={12} md={3} lg={2}>
           <ProductFilters />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={12} md={9} lg={10}>
           {loadingStatus === "loading" ? (
             <Typography>Loading....</Typography>
           ) : loadingStatus === "completed" ? (
@@ -48,7 +48,7 @@ export default function AllItemsLayout() {
           )}
         </Grid>
       </Grid>
-      </CommonWraperLayout>
+      </CommonWrapperLayout>
     </Grid>
   );
 }

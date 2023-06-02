@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import QtyOfSelectedSizes from "../../../components/productDetails/QtyOfSelectedSizes";
-import { priceValueFormat } from "../../../util/functions";
+import QtyOfSelectedSizes from "../../../../components/productDetails/QtyOfSelectedSizes";
+import { priceValueFormat } from "../../../../util/functions";
 
 export default function QuantitySelect({ price, availableQty, qtySetting }) {
   // console.log(parseInt(price));

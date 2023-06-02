@@ -5,7 +5,7 @@ import {
   Slide,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import SliderComponent from "../../components/homeLayout/SliderComponent";
+import SliderComponent from "../../../components/homeLayout/SliderComponent";
 
 export default function HomeCarouesl() {
   const imageList = [

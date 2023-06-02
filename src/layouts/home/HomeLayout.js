@@ -1,15 +1,15 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import HomeCarousel from "./home/HomeCarousel";
-import HomeBigButtons from "./home/HomeBigButtons";
-import CommonWraperLayout from "./common/CommonWraperLayout";
+import HomeCarousel from "./innerLayouts/HomeCarousel";
+import HomeBigButtons from "./innerLayouts/HomeBigButtons";
+import CommonWrapperLayout from "../common/CommonWrapperLayout";
 
 export default function HomeLayout() {
   return (
-    <CommonWraperLayout>
+    <CommonWrapperLayout isFromHome>
       <HomeCarousel />
       <Typography sx={{ pt: 2 }}>Sri Lankan Largest Fashion center</Typography>
       <HomeBigButtons></HomeBigButtons>
-    </CommonWraperLayout>
+    </CommonWrapperLayout>
   );
 }

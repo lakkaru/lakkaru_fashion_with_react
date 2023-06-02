@@ -1,7 +1,7 @@
 import React from "react";
 import { ShoppingCart as CartIcon } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
-import SnackBarMsg from "../../../components/common/SnackBarMsg";
+import SnackBarMsg from "../../../../components/common/SnackBarMsg";
 import { useState } from "react";
 
 export default function AddToCartButtonSection({ addProductToCart, productsCart, availableQty }) {

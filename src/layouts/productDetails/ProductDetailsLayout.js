@@ -1,8 +1,8 @@
 import React from "react";
-import CommonWrapperLayout from "./common/CommonWrapperLayout";
+import CommonWrapperLayout from "../common/CommonWrapperLayout";
 import { Box, Grid } from "@mui/material";
-import ProductDetailsSection from "./productDetails/ProductDetailsSection";
-import ImageSlider from "../components/productDetails/ImageSlider";
+import ProductDetailsSection from "./innerLayouts/ProductDetailsSection";
+import ImageSlider from "../../components/productDetails/ImageSlider";
 
 export default function ProductDetailLayout() {
   const productData = {
@@ -14,7 +14,7 @@ export default function ProductDetailLayout() {
     type: "Dress",
     price: "7700",
     availableSizes: ["xs", "m", "l"],
-    availableQty: 0,
+    availableQty: 10,
 
   };
   return (
@@ -28,10 +28,10 @@ export default function ProductDetailLayout() {
         }}
       >
         <Grid container sx={{ justifyContent: "space-between" }} spacing={4}>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <ImageSlider images={productData.images} />
           </Grid>
-          <Grid item xs={7} sx={{ padding: "10px" }}>
+          <Grid item xs={12} md={7} sx={{ padding: "10px" }}>
             <ProductDetailsSection
               name={productData.name}
               type={productData.type}

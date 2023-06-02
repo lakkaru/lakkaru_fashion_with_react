@@ -16,7 +16,7 @@ export default function ProductSize({ sizes }) {
         sizes.includes(val) ? (isAvailable = true) : (isAvailable = false);
         return (
           <Grid key={key} item xs={2}>
-            {console.log(val, isAvailable)} 
+            {/* {console.log(val, isAvailable)}  */}
             {/* xs false s true m true l true xl true */}
             <SingleProductSizeBox size={val} isAvailable={isAvailable} />
           </Grid>
