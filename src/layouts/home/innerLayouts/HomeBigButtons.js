@@ -104,7 +104,7 @@ export default function HomeBigButtons() {
   maxWidth1324?(maxWidth1026?imageWidth='35%':imageWidth="25%"):imageWidth="20%";
   
   return (
-    <Grid container  sx={{flexWrap: 'wrap',  width: '100%', justifyContent:'center', paddingBottom:'70px' }}>
+    <Grid container  sx={{flexWrap: 'wrap',  width: '100%', justifyContent:'center', paddingBottom:'80px' }}>
       {images.map((image) => (
         
         <ImageButton
