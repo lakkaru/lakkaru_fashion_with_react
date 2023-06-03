@@ -10,7 +10,7 @@ export default function CommonWrapperLayout({ children, isFromHome }) {
     <div>
       <HeaderMenuLayout />
       {maxWidth1024 ? (
-        <Box sx={{ padding: isFromHome ? "0" : "0 1%" }}>{children}</Box>
+        <Box sx={{ padding: isFromHome ? "0" : "0 2%" }}>{children}</Box>
       ) : (
         <Box sx={{ padding: isFromHome ? "0" : "0 4%" }}>{children}</Box>
       )}
