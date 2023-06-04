@@ -15,7 +15,7 @@ function App() {
       {/* <Cart/> */}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/lakkaru_fashion_with_react/" element={<Home />} />
         <Route path="/details" element={<Details />} />
         <Route path="/allItems" element={<AllItems />} />
         <Route path="/cart" element={<Cart />} />

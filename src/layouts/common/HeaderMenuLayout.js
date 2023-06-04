@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
+import logo from "../../images/logo.png";
 
 function HeaderMenuLayout() {
   const links = [
@@ -39,9 +40,9 @@ function HeaderMenuLayout() {
       style={{ backgroundColor: "#6A5ACD" }}
     >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/lakkaru_fashion_with_react">
           <img
-            src="logo.png"
+            src={logo}
             width="30"
             height="30"
             className="d-inline-block align-top"
