@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.nav-box{
+  position: relative;
+}
+.nav-box a::after{
+  content: "";
+  height: 3px;
+  width: 0px;
+  background-color: red;
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  transition: width 0.5s;
+}
+a:hover::after{
+  width: calc(100% - 30px);
+}
+.cart a:hover::after{
+  width: 100% ;
 }

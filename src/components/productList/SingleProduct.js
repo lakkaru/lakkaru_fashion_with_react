@@ -11,7 +11,7 @@ export default function SingleProduct({product}) {
   //   "https://radikadilanka.com/rdfashion/static/media/product107.39094bc5.jpg",
   // ];
   return (
-    <Box sx={{'& :hover':{cursor:"pointer"}}}>
+    <Box sx={{pb:2,'& :hover':{cursor:"pointer"}}}>
       <ProductImage images={product.images}/>
       <ProductName name={product.productName} type={product.productType}/>
       <ProductPrice price={product.price}/>
