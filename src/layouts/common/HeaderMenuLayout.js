@@ -64,12 +64,12 @@ function HeaderMenuLayout() {
                     style={({ isActive }) => {
                       return isActive
                         ? {
-                            color: "black",
+                            color: "#BDCD5A",
                             // textDecoration: "none",
                             paddingRight: "30px",
                             fontWeight: "500",
                             textDecorationColor: "red",
-                            textUnderlineOffset: "7px",
+                            textUnderlineOffset: "5px",
                           }
                         : {
                             color: "white",
@@ -96,12 +96,12 @@ function HeaderMenuLayout() {
                 style={({ isActive }) => {
                   return isActive
                     ? {
-                      color: "black",
+                      color: "#BDCD5A",
                       // textDecoration: "none",
                       // paddingRight: "30px",
                       fontWeight: "500",
                       textDecorationColor: "red",
-                      textUnderlineOffset: "7px",
+                      textUnderlineOffset: "5px",
                       }
                     : { color: "white",
                     textDecoration: "none",
