@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/lakkaru_fashion_with_react/static/css/main.524fe76e.css",
-    "main.js": "/lakkaru_fashion_with_react/static/js/main.4276f42d.js",
+    "main.js": "/lakkaru_fashion_with_react/static/js/main.27e04e29.js",
     "static/js/787.6b88c7f2.chunk.js": "/lakkaru_fashion_with_react/static/js/787.6b88c7f2.chunk.js",
     "index.html": "/lakkaru_fashion_with_react/index.html",
     "main.524fe76e.css.map": "/lakkaru_fashion_with_react/static/css/main.524fe76e.css.map",
-    "main.4276f42d.js.map": "/lakkaru_fashion_with_react/static/js/main.4276f42d.js.map",
+    "main.27e04e29.js.map": "/lakkaru_fashion_with_react/static/js/main.27e04e29.js.map",
     "787.6b88c7f2.chunk.js.map": "/lakkaru_fashion_with_react/static/js/787.6b88c7f2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.524fe76e.css",
-    "static/js/main.4276f42d.js"
+    "static/js/main.27e04e29.js"
   ]
 }
