@@ -5,7 +5,7 @@ import SnackBarMsg from "../../../../components/common/SnackBarMsg";
 import { useState } from "react";
 
 export default function AddToCartButtonSection({ addProductToCart, productsCart, availableQty }) {
-    console.log(availableQty);
+    // console.log(availableQty);
     const [cart, setCart] = useState(0);
   const handleClick = () => {
     

@@ -58,9 +58,9 @@ function HeaderMenuLayout() {
           <Nav className="me-auto justify-content-end">
             {links.map((val, key) => {
               return (
-                <Box class="nav-box">
+                <Box className="nav-box" key={key}>
                   <NavLink
-                    key={key}
+                    
                     to={val.url}
                     style={({ isActive }) => {
                       return isActive
@@ -91,7 +91,7 @@ function HeaderMenuLayout() {
             })}
           </Nav>
           <Nav>
-            <Box class="nav-box cart">
+            <Box className="nav-box cart">
               <NavLink
                 // eventKey={2}
                 style={({ isActive }) => {

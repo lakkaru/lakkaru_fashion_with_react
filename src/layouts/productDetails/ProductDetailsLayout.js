@@ -42,6 +42,6 @@ export default function ProductDetailLayout() {
           </Grid>
         </Grid>
       </Box>
-    </CommonWrapperLayout>
+    </CommonWrapperLayout> 
   );
 }
