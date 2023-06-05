@@ -4,6 +4,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
 
 
 
@@ -13,21 +14,25 @@ const images = [
     url: 'https://radikadilanka.com/rdfashion/static/media/all.71109807.jpg',
     title: 'All Items',
     width: imageWidth,
+    link:'/allItems'
   },
   {
     url: 'https://radikadilanka.com/rdfashion/static/media/new.5e646b80.jpg',
     title: 'New Items',
     width: imageWidth,
+    link:'/allItems'
   },
   {
     url: 'https://radikadilanka.com/rdfashion/static/media/tranding.6b7c7c16.jpg',
     title: 'Trending Items',
     width: imageWidth,
+    link:'/allItems'
   },
   {
     url: 'https://radikadilanka.com/rdfashion/static/media/top_items.867cf831.jpg',
     title: 'Top Items',
     width: imageWidth,
+    link:'/allItems'
   },
 ];
 
@@ -120,6 +125,7 @@ export default function HomeBigButtons() {
           <ImageSrc style={{ backgroundImage: `url(${image.url})`,borderRadius:'20px', border:'7px solid #d9d9d9' }} />
           <ImageBackdrop className="MuiImageBackdrop-root" style={{borderRadius:'20px'}}/>
           <Image>
+            <Link to={image.link} style={{color:'white'}}>
             <Typography
               component="span"
               variant="subtitle1"
@@ -136,7 +142,7 @@ export default function HomeBigButtons() {
             >
               {image.title}
               <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
+            </Typography></Link>
           </Image>
         </ImageButton>
       ))}

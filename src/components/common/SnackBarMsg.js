@@ -5,13 +5,10 @@ import { useEffect } from "react";
 
 function MyApp({ message, cart, variant }) {
   const { enqueueSnackbar } = useSnackbar();
-  const handleClickVariant = (variant) => () => {
-    // variant could be success, error, warning, info, or default
-    enqueueSnackbar(message, { variant });
-  };
+ 
   useEffect(() => {
     enqueueSnackbar(message, { variant });
-  }, [cart]);
+  }, [message, variant, enqueueSnackbar]);
 
 }
 

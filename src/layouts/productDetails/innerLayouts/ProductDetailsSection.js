@@ -16,13 +16,14 @@ export default function ProductDetailsSection({
   price,
   availableSizes,
   availableQty,
+  description,
 }) {
   // const availableSizes = ["xs", "s", "m"];
   const [productsCart, setProductsCart] = useState({});
   const [selectedQty, setSelectedQty] = useState(1);
 
   const addProductToCart = () => {
-    setProductsCart({ name: name, quantity: selectedQty });
+    setProductsCart({ name: name, quantity: selectedQty, description });
     // console.log(productsCart);
   };
 
@@ -56,7 +57,7 @@ export default function ProductDetailsSection({
       </Grid>
       <Grid item xs={12} sx={{ my: 3 }}>
         <ProductDescription
-          description={"This is the sample product description."}
+          description={description}
         />
       </Grid>
       <Grid item xs={12}>

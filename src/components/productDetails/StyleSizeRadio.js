@@ -14,7 +14,7 @@ export default function StyleSizeRadio({ availableSizes }) {
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
       >
-        {availableSizes.map((val, key) => {
+        {availableSizes?.map((val, key) => {
           return (
             <FormControlLabel
               key={key}

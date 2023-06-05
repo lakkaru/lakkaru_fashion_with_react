@@ -10,6 +10,7 @@ export default function SingleProduct({product}) {
   //   "https://radikadilanka.com/rdfashion/static/media/product7.930e47ba.jpg",
   //   "https://radikadilanka.com/rdfashion/static/media/product107.39094bc5.jpg",
   // ];
+  
   return (
     <Box sx={{pb:2,'& :hover':{cursor:"pointer"}}}>
       <ProductImage images={product.images}/>

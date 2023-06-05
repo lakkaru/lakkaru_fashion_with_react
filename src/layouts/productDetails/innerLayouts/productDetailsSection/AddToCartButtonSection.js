@@ -4,16 +4,19 @@ import { Box, Button } from "@mui/material";
 import SnackBarMsg from "../../../../components/common/SnackBarMsg";
 import { useState } from "react";
 
-export default function AddToCartButtonSection({ addProductToCart, productsCart, availableQty }) {
-    // console.log(availableQty);
-    const [cart, setCart] = useState(0);
+export default function AddToCartButtonSection({
+  addProductToCart,
+  productsCart,
+  availableQty,
+}) {
+  // console.log(availableQty);
+  const [cart, setCart] = useState(0);
   const handleClick = () => {
-    
     setCart(cart + 1);
-    addProductToCart(cart )
+    addProductToCart(cart);
   };
   let showButton;
-  availableQty <1? showButton=true:showButton=false;
+  availableQty < 1 ? (showButton = true) : (showButton = false);
   return (
     <Box>
       <Button
@@ -25,7 +28,18 @@ export default function AddToCartButtonSection({ addProductToCart, productsCart,
       >
         Add To Cart
       </Button>
-      <SnackBarMsg message={productsCart.name?(productsCart.quantity+' items of ' + productsCart.name + ' added to cart.'):'empty'} cart={cart} variant={"success"} />
+      <SnackBarMsg
+        message={
+          productsCart.name
+            ? productsCart.quantity +
+              " items of " +
+              productsCart.name +
+              " added to cart."
+            : "empty"
+        }
+        cart={cart}
+        variant={"success"}
+      />
     </Box>
   );
 }

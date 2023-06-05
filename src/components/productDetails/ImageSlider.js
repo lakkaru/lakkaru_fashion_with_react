@@ -29,7 +29,7 @@ export default function ImageSlider({images}) {
         modules={[Zoom, Navigation, Pagination]}
         className="mySwiper"
       >
-        {images.map((val, key) => {
+        {images?.map((val, key) => {
           return (
             <SwiperSlide key={key}>
               <div className="swiper-zoom-container">
