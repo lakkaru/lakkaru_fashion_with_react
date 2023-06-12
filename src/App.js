@@ -16,7 +16,7 @@ function App() {
 
       <Routes>
         <Route path="/lakkaru_fashion_with_react/" element={<Home />} />
-        <Route path="/details/:productName" element={<Details />} />
+        <Route path="/details" element={<Details />} />
         <Route path="/allItems" element={<AllItems />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
