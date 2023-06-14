@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import ProductFilters from "./innerLayouts/ProductFilters";
+import ProductFilters from "./innerLayouts/productFilters/ProductFiltersLayout";
 import ProductList from "./innerLayouts/ProductList";
 import axios from "axios";
 import CommonWrapperLayout from "../common/CommonWrapperLayout";
@@ -28,7 +28,7 @@ export default function AllItemsLayout() {
       <CommonWrapperLayout>
       <Grid container sx={{ p: 2 }}>
         <Grid item xs={12} md={3} lg={2}>
-          <ProductFilters />
+          <ProductFilters products={products} setProducts={setProducts}/>
         </Grid>
         <Grid item xs={12} md={9} lg={10}>
           {loadingStatus === "loading" ? (
