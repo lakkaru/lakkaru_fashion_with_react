@@ -8,6 +8,7 @@ import CommonWrapperLayout from "../common/CommonWrapperLayout";
 export default function AllItemsLayout() {
   const [loadingStatus, setLoadingStatus] = useState("notStarted");
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     setLoadingStatus("loading");
@@ -15,7 +16,10 @@ export default function AllItemsLayout() {
       .get("https://cdn.radikadilanka.com:9000/getProducts")
       .then((response) => {
         setLoadingStatus("completed");
-        setProducts(response.data);
+        setProducts((response.data).slice(0, 4));
+        setFilteredProducts((response.data).slice(0, 4));
+        // setProducts((response.data));
+        // setFilteredProducts((response.data));
         // console.log(response.data);
       })
       .catch((e) => {
@@ -28,7 +32,7 @@ export default function AllItemsLayout() {
       <CommonWrapperLayout>
       <Grid container sx={{ p: 2 }}>
         <Grid item xs={12} md={3} lg={2}>
-          <ProductFilters products={products} setProducts={setProducts}/>
+          <ProductFilters products={products}  setFilteredProducts={setFilteredProducts} />
         </Grid>
         <Grid item xs={12} md={9} lg={10}>
           {loadingStatus === "loading" ? (
@@ -36,7 +40,7 @@ export default function AllItemsLayout() {
           ) : loadingStatus === "completed" ? (
             products.length > 0 ? (
               <Box sx={{pb:5}}>
-                <ProductList products={products} />
+                <ProductList products={filteredProducts} />
               </Box>
             ) : (
               <Typography>No Products</Typography>

@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function SortFilter({ products, setProducts }) {
+export default function SortFilter({ products, setFilteredProducts }) {
   const [sort, setSort] = React.useState("select");
   // console.log(products);
 
@@ -36,7 +36,7 @@ export default function SortFilter({ products, setProducts }) {
       default:
         break;
     }
-    setProducts([...sorted]);
+    setFilteredProducts([...sorted]);
   };
   // console.log(products);
 
