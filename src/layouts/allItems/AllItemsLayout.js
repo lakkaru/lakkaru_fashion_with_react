@@ -16,10 +16,10 @@ export default function AllItemsLayout() {
       .get("https://cdn.radikadilanka.com:9000/getProducts")
       .then((response) => {
         setLoadingStatus("completed");
-        setProducts((response.data).slice(0, 4));
-        setFilteredProducts((response.data).slice(0, 4));
-        // setProducts((response.data));
-        // setFilteredProducts((response.data));
+        // setProducts((response.data).slice(0, 10));
+        // setFilteredProducts((response.data).slice(0, 10));
+        setProducts((response.data));
+        setFilteredProducts((response.data));
         // console.log(response.data);
       })
       .catch((e) => {

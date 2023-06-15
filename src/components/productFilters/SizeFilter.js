@@ -7,8 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function SizeFilter({ products, setFilteredProducts }) {
-  const sizes = ["xs", "s", "m", "l", "xl"];
+export default function SizeFilter({sizes, products, setFilteredProducts }) {
+  // const sizes = ["xs", "s", "m", "l", "xl"];
 
   let filterList = [];
 

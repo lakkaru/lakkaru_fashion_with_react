@@ -6,17 +6,20 @@ import SizeFilter from "../../../../components/productFilters/SizeFilter";
 import PriceFilter from "../../../../components/productFilters/PriceFilter";
 
 export default function ProductFilters({products,  setFilteredProducts}) {
+  const sizes = ["xs", "s", "m", "l", "xl"];
+  const types=['t-shirt','dress', 'skinny','seasonal', 'top', 'frock']
+  const range=[500, 10000]
   return (
     <Box sx={{padding:'30px', textAlign:'left'}}>
       <Typography variant={'h6'} sx={{py:1}}>SEARCH WITH FILTERS</Typography>
       <hr />
       <SortFilter products={products} setFilteredProducts={setFilteredProducts}/>
       <hr />
-      <DressTypeFilter/>
+      <DressTypeFilter types={types} products={products} setFilteredProducts={setFilteredProducts}/>
       <hr />
-      <SizeFilter products={products} setFilteredProducts={setFilteredProducts}/>
+      <SizeFilter sizes={sizes} products={products} setFilteredProducts={setFilteredProducts}/>
       <hr />
-      <PriceFilter/>
+      <PriceFilter range={range} products={products} setFilteredProducts={setFilteredProducts}/>
     </Box>
   );
 }
