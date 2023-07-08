@@ -3,7 +3,7 @@ import CommonWrapperLayout from "../common/CommonWrapperLayout";
 import { Box, Grid } from "@mui/material";
 import ProductDetailsSection from "./innerLayouts/ProductDetailsSection";
 import ImageSlider from "../../components/productDetails/ImageSlider";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function ProductDetailLayout() {
 
