@@ -7,7 +7,7 @@ export default function ProductImage({ images }) {
   const [image, setImage] = useState(images[0]);
   useEffect(() => {
     setImage(images[0]);
-  }, [images[0]]);
+  }, [images]);
   return (
     <Box sx={{ p: 3 }}>
       <img
