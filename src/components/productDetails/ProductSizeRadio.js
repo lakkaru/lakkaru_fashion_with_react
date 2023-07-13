@@ -5,7 +5,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import {Typography } from "@mui/material";
 
-export default function StyleSizeRadio({ availableSizes }) {
+export default function ProductSizeRadio({ availableSizes , handleSizeSelect}) {
   return (
     <FormControl>
       {/* <FormLabel id="demo-row-radio-buttons-group-label">STYLE SIZE</FormLabel> */}
@@ -17,6 +17,7 @@ export default function StyleSizeRadio({ availableSizes }) {
         {availableSizes?.map((val, key) => {
           return (
             <FormControlLabel
+            onClick={()=>handleSizeSelect(val)}
               key={key}
               value={val}
               control={<Radio />}

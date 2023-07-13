@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CommonWrapperLayout from "../common/CommonWrapperLayout";
 import { Box, Grid } from "@mui/material";
 import ProductDetailsSection from "./innerLayouts/ProductDetailsSection";
@@ -6,12 +6,18 @@ import ImageSlider from "../../components/productDetails/ImageSlider";
 import { useLocation } from "react-router-dom";
 
 export default function ProductDetailLayout() {
-
   const location = useLocation();
-   const product = location.state?.product;
+  const product = location.state?.product;
+  const [productsCart, setProductsCart] = useState([]);
+ 
+  
+  const addProductToCart = (selectedQty, selectedSize) => {
+    setProductsCart({ product:product, quantity: selectedQty, selectedSize:selectedSize });
+    console.log({ product:product, quantity: selectedQty, selectedSize:selectedSize });
+  };
 
   return (
-    <CommonWrapperLayout> 
+    <CommonWrapperLayout>
       <Box
         sx={{
           border: "4px solid #6A5ACD",
@@ -26,16 +32,11 @@ export default function ProductDetailLayout() {
           </Grid>
           <Grid item xs={12} md={7} sx={{ padding: "10px" }}>
             <ProductDetailsSection
-              name={product.productName}
-              type={product.productType}
-              price={product.price}
-              availableSizes={product.size}
-              availableQty={product.availableQty}
-              description={product.description}
+              product={product} addProductToCart={addProductToCart}
             />
           </Grid>
         </Grid>
       </Box>
-    </CommonWrapperLayout> 
+    </CommonWrapperLayout>
   );
 }

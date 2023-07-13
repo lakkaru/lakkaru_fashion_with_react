@@ -5,15 +5,18 @@ import SnackBarMsg from "../../../../components/common/SnackBarMsg";
 import { useState } from "react";
 
 export default function AddToCartButtonSection({
-  addProductToCart,
-  productsCart,
+  handleClick,
+  productName,
+  selectedQty,
   availableQty,
 }) {
-  // console.log(availableQty);
+  console.log(productName);
   const [cart, setCart] = useState(0);
-  const handleClick = () => {
+
+
+  const handleButtonClick = () => {
     setCart(cart + 1);
-    addProductToCart(cart);
+    handleClick(cart);
   };
   let showButton;
   availableQty < 1 ? (showButton = true) : (showButton = false);
@@ -23,17 +26,17 @@ export default function AddToCartButtonSection({
         variant="contained"
         startIcon={<CartIcon />}
         sx={{ bgcolor: "#6a5acd", color: "white", px: 5, borderRadius: "20px" }}
-        onClick={handleClick}
+        onClick={handleButtonClick}
         disabled={showButton}
       >
         Add To Cart
       </Button>
       <SnackBarMsg
         message={
-          productsCart.name
-            ? productsCart.quantity +
+          productName
+            ? selectedQty +
               " items of " +
-              productsCart.name +
+              productName +
               " added to cart."
             : "empty"
         }

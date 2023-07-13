@@ -3,8 +3,12 @@ import { Box, Grid, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CommonWrapperLayout from "../common/CommonWrapperLayout";
+import { useSelector } from "react-redux";
 
 export default function CartLayout() {
+  const cartReducer=useSelector(store=>store.cartReducer);
+  console.log(cartReducer);
+  
   return (
     <CommonWrapperLayout>
       <Grid item p={4}>

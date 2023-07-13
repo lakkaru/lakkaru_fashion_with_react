@@ -1,41 +1,33 @@
 import React, { useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import QtyOfSelectedSizes from "../../../../components/productDetails/QtyOfSelectedSizes";
+import QtySelectSection from "../../../../components/productDetails/QtySelectSection";
 import { priceValueFormat } from "../../../../util/functions";
 
-export default function QuantitySelect({ price, availableQty, qtySetting }) {
+export default function QuantitySelect({
+  price,
+  availableQty,
+  handleQtySelect,
+}) {
   // console.log(parseInt(price));
+  const [selectedQty, setSelectedQty] = useState(1);
 
-  const [quantity, setQuantity] = useState(1);
-
-  const handleQuantity = (type) => {
-    if (type === "add") {
-      if (quantity < availableQty) {
-        setQuantity(quantity + 1);
-        qtySetting(quantity+1);
-      }
-    }
-    if (type === "remove") {
-      if (quantity > 1) {
-        setQuantity(quantity - 1);
-        qtySetting(quantity-1);
-      }
-    }
-    
+  const handleQtyChange = (quantity) => {
+    handleQtySelect(quantity);
+    // console.log('qty 2', quantity)
+    setSelectedQty(quantity);
   };
-  // console.log(quantity);
 
   return (
     <Grid container justifyContent={"space-between"}>
       <Grid item>
-        <QtyOfSelectedSizes
-          handleQuantity={handleQuantity}
-          quantity={quantity}
+        <QtySelectSection
+          handleQtyChange={handleQtyChange}
+          availableQty={availableQty}
         />
       </Grid>
       <Grid item>
         <Typography variant="h5">
-          {priceValueFormat(quantity * price)}
+          {priceValueFormat(selectedQty * price)}
         </Typography>
       </Grid>
     </Grid>

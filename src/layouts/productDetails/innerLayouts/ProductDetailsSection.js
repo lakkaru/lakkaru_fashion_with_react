@@ -3,36 +3,32 @@ import { Grid, Typography } from "@mui/material";
 import RatingComponent from "../../../components/productDetails/RatingComponent";
 import StockStatusChip from "../../../components/productDetails/StockStatusChip";
 import PriceComponent from "../../../components/productDetails/PriceComponent";
-import StyleSizeRadio from "../../../components/productDetails/StyleSizeRadio";
+import ProductSizeRadio from "../../../components/productDetails/ProductSizeRadio";
 import ProductNameInDetails from "../../../components/productDetails/ProductNameInDetails";
 import ProductDescription from "../../../components/productDetails/ProductDescription";
 import QuantitySelect from "./productDetailsSection/QuantitySelect";
 import AddToCartButtonSection from "./productDetailsSection/AddToCartButtonSection";
 import { useState } from "react";
 
-export default function ProductDetailsSection({
-  name,
-  type,
-  price,
-  availableSizes,
-  availableQty,
-  description,
-}) {
+export default function ProductDetailsSection({ product, addProductToCart }) {
   // const availableSizes = ["xs", "s", "m"];
-  const [productsCart, setProductsCart] = useState({});
-  const [selectedQty, setSelectedQty] = useState(1);
 
-  const addProductToCart = () => {
-    setProductsCart({ name: name, quantity: selectedQty, description });
-    // console.log(productsCart);
+  const [selectedQty, setSelectedQty] = useState(1);
+  const [selectedSize, setSelectedSize] = useState();
+
+  const handleQtySelect = (qty) => {
+    setSelectedQty(qty);
+    // console.log("selected qty 3", qty);
   };
 
-  const qtySetting=(qty)=>{
-    // console.log(qty);
-    
-    setSelectedQty(qty);    
-  }
-  // console.log(qty);
+  const handleSizeSelect = (size) => {
+    // console.log('size ' ,size);
+    setSelectedSize(size);
+  };
+  const handleClick = () => {
+    // addProductToCart(selectedQty, selectedSize);
+  };
+
   return (
     <Grid container textAlign={"left"}>
       <Grid
@@ -43,41 +39,54 @@ export default function ProductDetailsSection({
         xs={12}
       >
         <Grid item>
-          <ProductNameInDetails name={name} type={type} />
+          <ProductNameInDetails
+            name={product.productName}
+            type={product.type}
+          />
         </Grid>
         <Grid item>
-          <StockStatusChip availableQty={availableQty} />
+          <StockStatusChip availableQty={product.availableQty} />
         </Grid>
       </Grid>
       <Grid item xs={12}>
         <RatingComponent />
       </Grid>
       <Grid item xs={12}>
-        <PriceComponent price={price} />
+        <PriceComponent price={product.price} />
       </Grid>
       <Grid item xs={12} sx={{ my: 3 }}>
-        <ProductDescription
-          description={description}
-        />
+        <ProductDescription description={product.description} />
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h6" sx={{ textTransform: "uppercase" }}>
           Style Size
         </Typography>
-        <StyleSizeRadio availableSizes={availableSizes} />
+        <ProductSizeRadio
+          availableSizes={product.size}
+          handleSizeSelect={handleSizeSelect}
+        />
         <hr />
       </Grid>
 
       <Grid item xs={12}>
         <Grid item>
-          <Typography>Quantity of the selected size</Typography>
+          <Typography>Quantity of the selected item</Typography>
         </Grid>
         <Grid item>
-          <QuantitySelect price={price} availableQty={availableQty} qtySetting={qtySetting}/>
+          <QuantitySelect
+            price={product.price}
+            availableQty={product.availableQty}
+            handleQtySelect={handleQtySelect}
+          />
         </Grid>
       </Grid>
       <Grid item xs={12} textAlign={"right"} sx={{ py: 3 }}>
-        <AddToCartButtonSection addProductToCart={addProductToCart} productsCart={productsCart} availableQty={availableQty}/>
+        <AddToCartButtonSection
+          handleClick={handleClick}
+          productName={product.productName}
+          selectedQty={selectedQty}
+          availableQty={product.availableQty}
+        />
         <hr />
       </Grid>
 
