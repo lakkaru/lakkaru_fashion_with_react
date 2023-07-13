@@ -8,6 +8,7 @@ export default function AddToCartButtonSection({
   handleClick,
   productName,
   selectedQty,
+  selectedSize,
   availableQty,
 }) {
   console.log(productName);
@@ -19,7 +20,10 @@ export default function AddToCartButtonSection({
     handleClick(cart);
   };
   let showButton;
-  availableQty < 1 ? (showButton = true) : (showButton = false);
+  console.log(selectedSize);
+  
+  availableQty < 1 || selectedSize==undefined ? (showButton = true) : (showButton = false);
+  console.log(showButton);
   return (
     <Box>
       <Button

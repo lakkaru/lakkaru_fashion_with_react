@@ -85,6 +85,7 @@ export default function ProductDetailsSection({ product, addProductToCart }) {
           handleClick={handleClick}
           productName={product.productName}
           selectedQty={selectedQty}
+          selectedSize={selectedSize}
           availableQty={product.availableQty}
         />
         <hr />
