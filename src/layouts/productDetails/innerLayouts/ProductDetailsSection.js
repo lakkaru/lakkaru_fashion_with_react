@@ -10,7 +10,7 @@ import QuantitySelect from "./productDetailsSection/QuantitySelect";
 import AddToCartButtonSection from "./productDetailsSection/AddToCartButtonSection";
 import { useState } from "react";
 
-export default function ProductDetailsSection({ product, addProductToCart }) {
+export default function ProductDetailsSection({ product, addToCartHandle }) {
   // const availableSizes = ["xs", "s", "m"];
 
   const [selectedQty, setSelectedQty] = useState(1);
@@ -26,7 +26,7 @@ export default function ProductDetailsSection({ product, addProductToCart }) {
     setSelectedSize(size);
   };
   const handleClick = () => {
-    // addProductToCart(selectedQty, selectedSize);
+    addToCartHandle(selectedQty, selectedSize);
   };
 
   return (
@@ -65,6 +65,15 @@ export default function ProductDetailsSection({ product, addProductToCart }) {
           availableSizes={product.size}
           handleSizeSelect={handleSizeSelect}
         />
+        <Typography
+          sx={{
+            color: "red",
+            visibility: selectedSize === undefined ? "visible" : "hidden",
+            fontSize: "0.8rem",
+          }}
+        >
+          Please select preferred size.
+        </Typography>
         <hr />
       </Grid>
 

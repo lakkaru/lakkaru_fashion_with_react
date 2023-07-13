@@ -11,7 +11,7 @@ export default function AddToCartButtonSection({
   selectedSize,
   availableQty,
 }) {
-  console.log(productName);
+  // console.log(productName);
   const [cart, setCart] = useState(0);
 
 
@@ -20,10 +20,10 @@ export default function AddToCartButtonSection({
     handleClick(cart);
   };
   let showButton;
-  console.log(selectedSize);
+  // console.log(selectedSize);
   
   availableQty < 1 || selectedSize==undefined ? (showButton = true) : (showButton = false);
-  console.log(showButton);
+  // console.log(showButton);
   return (
     <Box>
       <Button
