@@ -4,8 +4,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.png";
+import { useSelector } from "react-redux";
 
 function HeaderMenuLayout() {
+  const productsCart = useSelector((store) => store.cartReducer);
+
   const links = [
     {
       item: "All Items",
@@ -112,7 +115,7 @@ function HeaderMenuLayout() {
                 to="/cart"
                 // style={{ color: "white", textDecoration: "none" }}
               >
-                CART
+                CART {productsCart.cart.length!=0?`(${productsCart.cart.length})`:``}
               </NavLink>
             </Box>
           </Nav>

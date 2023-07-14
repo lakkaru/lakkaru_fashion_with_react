@@ -3,6 +3,7 @@ import { ShoppingCart as CartIcon } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
 import SnackBarMsg from "../../../../components/common/SnackBarMsg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function AddToCartButtonSection({
   handleClick,
@@ -26,6 +27,7 @@ export default function AddToCartButtonSection({
   // console.log(showButton);
   return (
     <Box>
+      <Link to={'/cart'}>
       <Button
         variant="contained"
         startIcon={<CartIcon />}
@@ -34,7 +36,7 @@ export default function AddToCartButtonSection({
         disabled={showButton}
       >
         Add To Cart
-      </Button>
+      </Button></Link>
       <SnackBarMsg
         message={
           productName

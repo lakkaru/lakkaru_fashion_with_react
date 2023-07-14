@@ -3,19 +3,19 @@ import * as React from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { useEffect } from "react";
 
-function MyApp({ message, cart, variant }) {
+function MyApp({ message, variant }) {
   const { enqueueSnackbar } = useSnackbar();
  
   useEffect(() => {
     enqueueSnackbar(message, { variant });
-  }, [message, variant, enqueueSnackbar]);
+  }, [message]);
 
 }
 
-export default function SnackBarMsg({ message, cart, variant }) {
+export default function SnackBarMsg({ message, variant }) {
   return (
     <SnackbarProvider maxSnack={4} autoHideDuration={3000}>
-      <MyApp message={message} cart={cart} variant={variant} />
+      <MyApp message={message} variant={variant} />
     </SnackbarProvider>
   );
 }
