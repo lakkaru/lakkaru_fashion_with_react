@@ -15,21 +15,22 @@ export default function ProductPriceFilter({
   setFilteredProducts,
 }) {
   // const valueRange=[500, 10000];
+  const displayProducts=[...products];
   const [priceRange, setPriceRange] = React.useState(range);
 
-  const handleChange = (event, newValue) => {
-    setPriceRange(newValue);
-    // console.log(priceRange);
-    productFilter(priceRange);
+  const handleChange = (event, newRange) => {
+    setPriceRange(newRange);
+    console.log(newRange);
+    productFilter(newRange);
   };
 
   const productFilter = (priceRange) => {
     const filteredProducts = [];
-    products.map((val) => {
+    displayProducts.map((val) => {
       if (priceRange[0] <= val.price &  priceRange[1]>=val.price) {
       filteredProducts.push(val);
       }
-      console.log(filteredProducts);
+      // console.log(filteredProducts);
       
       return '';
     });

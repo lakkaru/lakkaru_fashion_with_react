@@ -15,7 +15,7 @@ export default function ProductFilters({products, originalProducts,  setFiltered
       <hr />
       <SortFilter products={products} setFilteredProducts={setFilteredProducts}/>
       <hr />
-      <DressTypeFilter types={types} products={products} setFilteredProducts={setFilteredProducts}/>
+      <DressTypeFilter types={types} products={products} originalProducts={originalProducts} setFilteredProducts={setFilteredProducts}/>
       <hr />
       <SizeFilter sizes={sizes} products={products} originalProducts={originalProducts} setFilteredProducts={setFilteredProducts}/>
       <hr />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   FormGroup,
@@ -7,54 +7,55 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function DressTypeFilter({types, products, setFilteredProducts }) {
+export default function DressTypeFilter({types, products, originalProducts, setFilteredProducts }) {
 
-  let filterList = [];
-
+  const [filterList, setFilterList] = useState([]);
+  let typeList = filterList;
   const handleOnChange = (e) => {
+    //getting selected types
     if (e.target.checked) {
-      //when user select a size
-
-      //checking if the filter reset with unchecking
-      if (filterList.length !== types.length) {
-        filterList.push(e.target.name.toLowerCase());
-      } else {
-        filterList = [];
-        filterList.push(e.target.name.toLowerCase());
+      //when user select a type
+      typeList.push(e.target.name.toLowerCase());
+      setFilterList(typeList);
+      //initialize the list after deselecting and selecting
+      if (typeList.length > types.length) {
+        typeList = [];
+        typeList.push(e.target.name.toLowerCase());
+        setFilterList(typeList);
       }
-      // console.log(filterList.length);
     } else {
-      //when user deselect a size
+      //when user deselect a type
       //removing the selected item from filterList arr
-      const index = filterList.indexOf(e.target.name.toLowerCase());
+      const index = typeList.indexOf(e.target.name.toLowerCase());
       if (index > -1) {
-        filterList.splice(index, 1);
+        typeList.splice(index, 1);
+        setFilterList(typeList);
       }
-      // console.log(filterList);
-      // console.log(filterList.length);
-      if (filterList.length === 0) {
-        filterList = [...types];
+      //when user deselect all types
+      if (typeList.length === 0) {
+        typeList = [...types];
+        setFilterList(typeList);
       }
     }
-    // console.log(filterList);
-    productFilter(filterList);
+    console.log(typeList);
+    handleTypeFilter(typeList);
   };
 
-  const productFilter = (filterList) => {
-    // console.log(filterList);
-    const filteredProducts = [];
-    products.map((val) => {
-      console.log(val);
-
-      if (filterList.includes(val.productType)) {
-        filteredProducts.push(val);
-      }
-      
-        // console.log(filteredProducts)
-      
-      return "";
+  //getting filtered product list
+  const handleTypeFilter = (typeList) => {
+    // console.log(originalProducts);
+    const filteredProductsSet = new Set();
+    originalProducts.forEach((product) => {
+      //checking product for user selected type
+      typeList.forEach((sType) => {
+        if (product.productType.includes(sType)) {
+          filteredProductsSet.add(product);
+        }
+      });
     });
-    setFilteredProducts(filteredProducts);
+
+    setFilteredProducts(Array.from(filteredProductsSet));
+    //  console.log(Array.from(filteredProductsSet));
   };
 
   return (
