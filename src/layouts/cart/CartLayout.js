@@ -64,17 +64,17 @@ const dispatch = useDispatch();
 
         return (
           <Grid item p={4} key={key}>
-            <Grid item container justifyContent={"space-between"} spacing={5}>
+            <Grid item container justifyContent={"space-between"} spacing={1} px={1} py={3} className="px-md-3">
               <Grid item xs={4}>
                 <img
                   src={val.product.images[0]}
                   alt=""
-                  width={"150px"}
-                  height={"200px"}
-                  style={{ marginLeft: "auto", borderRadius: "5px" }}
+                  width={"80%"}
+                  // height={"200px"}
+                  style={{borderRadius: "5px" }}
                 />
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={8}  className="px-1, px-md-3">
                 <Grid container justifyContent={"space-between"}>
                   <Grid item xs={8}>
                     <Typography sx={{ fontWeight: "bold", textAlign: "left" }}>
