@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Grid, Typography, dividerClasses } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CommonWrapperLayout from "../common/CommonWrapperLayout";
@@ -29,7 +29,7 @@ const dispatch = useDispatch();
         container
         sx={{ textAlign: "left", pl: 6, pt: 6 }}
         // visibility={productsCart.cart.length==0 ? "visible" : "hidden"}
-        display={productsCart.cart.length == 0 ? "block" : "none"}
+        display={productsCart.cart.length === 0 ? "block" : "none"}
       >
         <Typography
           variant="h4"
@@ -50,7 +50,7 @@ const dispatch = useDispatch();
         item
         container
         justifyContent={"flex-end"}
-        visibility={productsCart.cart.length == 0 ? "hidden" : "visible"}
+        visibility={productsCart.cart.length === 0 ? "hidden" : "visible"}
       >
         <Grid item>
           <Typography p={2} sx={{ fontSize: "1rem", fontWeight: "600" }}>

@@ -23,7 +23,7 @@ export default function AddToCartButtonSection({
   let showButton;
   // console.log(selectedSize);
   
-  availableQty < 1 || selectedSize==undefined ? (showButton = true) : (showButton = false);
+  availableQty < 1 || selectedSize===undefined ? (showButton = true) : (showButton = false);
   // console.log(showButton);
   return (
     <Box>

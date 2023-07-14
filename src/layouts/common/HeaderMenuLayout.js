@@ -115,7 +115,7 @@ function HeaderMenuLayout() {
                 to="/cart"
                 // style={{ color: "white", textDecoration: "none" }}
               >
-                CART {productsCart.cart.length!=0?`(${productsCart.cart.length})`:``}
+                CART {productsCart.cart.length!==0?`(${productsCart.cart.length})`:``}
               </NavLink>
             </Box>
           </Nav>
