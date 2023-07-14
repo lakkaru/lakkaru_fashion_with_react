@@ -5,7 +5,7 @@ import DressTypeFilter from "../../../../components/productFilters/DressTypeFilt
 import SizeFilter from "../../../../components/productFilters/SizeFilter";
 import PriceFilter from "../../../../components/productFilters/PriceFilter";
 
-export default function ProductFilters({products,  setFilteredProducts}) {
+export default function ProductFilters({products, originalProducts,  setFilteredProducts}) {
   const sizes = ["xs", "s", "m", "l", "xl"];
   const types=['t-shirt','dress', 'skinny','seasonal', 'top', 'frock']
   const range=[500, 10000]
@@ -17,7 +17,7 @@ export default function ProductFilters({products,  setFilteredProducts}) {
       <hr />
       <DressTypeFilter types={types} products={products} setFilteredProducts={setFilteredProducts}/>
       <hr />
-      <SizeFilter sizes={sizes} products={products} setFilteredProducts={setFilteredProducts}/>
+      <SizeFilter sizes={sizes} products={products} originalProducts={originalProducts} setFilteredProducts={setFilteredProducts}/>
       <hr />
       <PriceFilter range={range} products={products} setFilteredProducts={setFilteredProducts}/>
     </Box>

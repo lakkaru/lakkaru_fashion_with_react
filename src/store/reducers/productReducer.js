@@ -2,6 +2,7 @@ import * as Actions from "../actions/productAction";
 const initialState = {
   productDataLoadingStatus: "notStarted",
   productList: [],
+  displayProductList: [],
 };
 
 const productReducer = (state = initialState, action) => {
@@ -13,17 +14,17 @@ const productReducer = (state = initialState, action) => {
         ...state,
         productDataLoadingStatus: "completed",
         productList: action.payload,
+        displayProductList: action.payload,
       };
     case Actions.FETCH_PRODUCT_DATA_FAILURE:
       return {
         ...state,
         productDataLoadingStatus: "failure",
-        productList:[],
+        productList: [],
+        displayProductList: [],
       };
-      case Actions.ASSIGN_UPDATED_PRODUCT_LIST:
-        
-      return {...state,
-        productList:[...action.payload]}
+    case Actions.ASSIGN_UPDATED_PRODUCT_LIST:
+      return { ...state, displayProductList: [...action.payload] };
 
     default:
       return state;

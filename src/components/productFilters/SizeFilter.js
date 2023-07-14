@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   FormGroup,
@@ -7,53 +7,60 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function SizeFilter({sizes, products, setFilteredProducts }) {
-  // const sizes = ["xs", "s", "m", "l", "xl"];
-
-  let filterList = [];
-
+export default function SizeFilter({
+  sizes,
+  products,
+  originalProducts,
+  setFilteredProducts,
+}) {
+  
+  const [filterList, setFilterList] = useState([]);
+  let sizeList = filterList;
   const handleOnChange = (e) => {
+    //getting selected sizes
     if (e.target.checked) {
       //when user select a size
-
-      //checking if the filter reset with unchecking
-      if (filterList.length !== sizes.length) {
-        filterList.push(e.target.name.toLowerCase());
-      } else {
-        filterList = [];
-        filterList.push(e.target.name.toLowerCase());
+      sizeList.push(e.target.name.toLowerCase());
+      setFilterList(sizeList);
+      //initialize the list after deselecting and selecting
+      if (sizeList.length > sizes.length) {
+        sizeList = [];
+        sizeList.push(e.target.name.toLowerCase());
+        setFilterList(sizeList);
       }
-      // console.log(filterList.length);
     } else {
       //when user deselect a size
       //removing the selected item from filterList arr
-      const index = filterList.indexOf(e.target.name.toLowerCase());
+      const index = sizeList.indexOf(e.target.name.toLowerCase());
       if (index > -1) {
-        filterList.splice(index, 1);
+        sizeList.splice(index, 1);
+        setFilterList(sizeList);
       }
-      // console.log(filterList);
-      // console.log(filterList.length);
-      if (filterList.length === 0) {
-        filterList = [...sizes];
+      //when user deselect all sizes
+      if (sizeList.length === 0) {
+        sizeList = [...sizes];
+        setFilterList(sizeList);
       }
     }
-    // console.log(filterList);
-    productFilter(filterList);
+    // console.log(sizeList);
+    handleSizeFilter(sizeList);
   };
 
-  const productFilter = (filterList) => {
-    // console.log(filterList);
-    const filteredProducts = [];
-    products.map((val) => {
-      let isFounded = val.size.some((ai) => filterList.includes(ai));
-      // console.log(isFounded);
-      if (isFounded) {
-        filteredProducts.push(val);
-        // console.log(filteredProducts)
-      }
-      return "";
+  //getting filtered product list
+  const handleSizeFilter = (sizeList) => {
+    // console.log(sizeList);
+    const filteredProductsSet = new Set();
+    originalProducts.forEach((product) => {
+      //checking product for user selected size
+      sizeList.forEach((sSize) => {
+        if (product.size.includes(sSize)) {
+          filteredProductsSet.add(product);
+        }
+      });
     });
-    setFilteredProducts(filteredProducts);
+
+    setFilteredProducts(Array.from(filteredProductsSet));
+    //  console.log(Array.from(filteredProductsSet));
   };
 
   return (

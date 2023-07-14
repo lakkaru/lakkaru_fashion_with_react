@@ -4,14 +4,16 @@ import ProductFilters from "./innerLayouts/productFilters/ProductFiltersLayout";
 import ProductList from "./innerLayouts/ProductList";
 import CommonWrapperLayout from "../common/CommonWrapperLayout";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductData, updateProductList } from "../../store/actions/productAction";
+import {
+  fetchProductData,
+  updateProductList,
+} from "../../store/actions/productAction";
 
 export default function AllItemsLayout() {
   // const [loadingStatus, setLoadingStatus] = useState("notStarted");
   // const [products, setProducts] = useState([]);
- 
 
-  const { productDataLoadingStatus: loadingStatus, productList: products } =
+  const { productDataLoadingStatus: loadingStatus, displayProductList: products, productList:originalProductList } =
     useSelector((store) => store.productReducer);
   // console.log(loadingStatus, products);
   // const [filteredProducts, setFilteredProducts] = useState([products]);
@@ -22,9 +24,12 @@ export default function AllItemsLayout() {
       dispatch(fetchProductData());
     }
   }, [loadingStatus]);
-  const handleUpdateProductList=(filteredProductList)=>{
-    dispatch(updateProductList(filteredProductList))
-  }
+
+  const handleUpdateProductList = (filteredProductList) => {
+    // console.log(filteredProductList);
+    dispatch(updateProductList(filteredProductList));
+  };
+
   return (
     <Grid>
       <CommonWrapperLayout>
@@ -32,6 +37,7 @@ export default function AllItemsLayout() {
           <Grid item xs={12} md={3} lg={2}>
             <ProductFilters
               products={products}
+              originalProducts={originalProductList}
               setFilteredProducts={handleUpdateProductList}
             />
           </Grid>
