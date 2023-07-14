@@ -3,19 +3,20 @@ import * as React from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { useEffect } from "react";
 
-function MyApp({ message, variant }) {
+function MyApp({ message, addCount, variant }) {
   const { enqueueSnackbar } = useSnackbar();
- 
-  useEffect(() => {
-    enqueueSnackbar(message, { variant });
-  }, [message]);
 
+  useEffect(() => {
+    if (addCount > 0) {
+      enqueueSnackbar(message, { variant });
+    }
+  }, [addCount]);
 }
 
-export default function SnackBarMsg({ message, variant }) {
+export default function SnackBarMsg({ message, addCount, variant }) {
   return (
     <SnackbarProvider maxSnack={4} autoHideDuration={3000}>
-      <MyApp message={message} variant={variant} />
+      <MyApp message={message} variant={variant} addCount={addCount} />
     </SnackbarProvider>
   );
 }

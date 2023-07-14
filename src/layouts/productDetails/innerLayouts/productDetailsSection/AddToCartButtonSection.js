@@ -13,12 +13,14 @@ export default function AddToCartButtonSection({
   availableQty,
 }) {
   // console.log(productName);
-  const [cart, setCart] = useState(0);
+  // const [cart, setCart] = useState(0);
+  const [addCount, setAddCount]= useState(0);
 
 
   const handleButtonClick = () => {
-    setCart(cart + 1);
-    handleClick(cart);
+    // setCart(cart + 1);
+    handleClick(addCount);
+    setAddCount(addCount+1);
   };
   let showButton;
   // console.log(selectedSize);
@@ -27,7 +29,7 @@ export default function AddToCartButtonSection({
   // console.log(showButton);
   return (
     <Box>
-      <Link to={'/cart'}>
+      {/* <Link to={'/cart'}> */}
       <Button
         variant="contained"
         startIcon={<CartIcon />}
@@ -36,7 +38,8 @@ export default function AddToCartButtonSection({
         disabled={showButton}
       >
         Add To Cart
-      </Button></Link>
+      </Button>
+      {/* </Link> */}
       <SnackBarMsg
         message={
           productName
@@ -46,7 +49,7 @@ export default function AddToCartButtonSection({
               " added to cart."
             : "empty"
         }
-        cart={cart}
+        addCount={addCount}
         variant={"success"}
       />
     </Box>
