@@ -12,10 +12,11 @@ import { Grid, Typography } from "@mui/material";
 export default function ProductPriceFilter({
   range,
   products,
+  originalProducts,
   setFilteredProducts,
 }) {
   // const valueRange=[500, 10000];
-  const displayProducts=[...products];
+  const displayProducts=[...originalProducts];
   const [priceRange, setPriceRange] = React.useState(range);
 
   const handleChange = (event, newRange) => {

@@ -5,39 +5,38 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function SortFilter({ products, setFilteredProducts }) {
-  const [sort, setSort] = React.useState("select");
-  // console.log(products);
+export default function SortFilter({ sort, handleSortChange}) {
+  // const [sort, setSort] = React.useState("select");
+  
+  // let sortType;
+  // let sorted;
 
-  let sortType;
-  let sorted;
+  // const handleChange = (event) => {
+  //   // setSort(event.target.value);
+  //   sortType = event.target.value;
+  //   // console.log(sortType);
+  //   setSort(sortType);
+  //   switch (sortType) {
+  //     case "priceAsc":
+  //       sorted = products.sort((a, b) => {
+  //         return a.price - b.price;
+  //       });
+  //       // console.log(products);
 
-  const handleChange = (event) => {
-    // setSort(event.target.value);
-    sortType = event.target.value;
-    // console.log(sortType);
-    setSort(sortType);
-    switch (sortType) {
-      case "priceAsc":
-        sorted = products.sort((a, b) => {
-          return a.price - b.price;
-        });
-        // console.log(products);
+  //       break;
+  //     case "priceDesc":
+  //       sorted = products.sort((a, b) => {
+  //         return b.price - a.price;
+  //       });
+  //       // console.log(products);
 
-        break;
-      case "priceDesc":
-        sorted = products.sort((a, b) => {
-          return b.price - a.price;
-        });
-        // console.log(products);
+  //       break;
 
-        break;
-
-      default:
-        break;
-    }
-    setFilteredProducts([...sorted]);
-  };
+  //     default:
+  //       break;
+  //   }
+  //   setFilteredProducts([...sorted]);
+  // };
   // console.log(products);
 
   return (
@@ -49,7 +48,7 @@ export default function SortFilter({ products, setFilteredProducts }) {
           id="demo-simple-select"
           value={sort}
           label="Sort"
-          onChange={handleChange}
+          onChange={handleSortChange}
         >
           {/* <MenuItem value={'dateAsc'}>DATE ASCENDING</MenuItem> */}
           <MenuItem value={"select"}>Select</MenuItem>
