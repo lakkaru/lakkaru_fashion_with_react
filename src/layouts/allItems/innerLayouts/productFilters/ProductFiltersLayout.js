@@ -1,56 +1,87 @@
 import { Box, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SortFilter from "../../../../components/productFilters/SortFilter";
 import DressTypeFilter from "../../../../components/productFilters/DressTypeFilter";
 import SizeFilter from "../../../../components/productFilters/SizeFilter";
 import PriceFilter from "../../../../components/productFilters/PriceFilter";
 
-export default function ProductFilters({products, originalProducts,  setFilteredProducts}) {
+export default function ProductFilters({
+  products,
+  originalProducts,
+  setFilteredProducts,
+}) {
   const sizes = ["xs", "s", "m", "l", "xl"];
-  const types=['t-shirt','dress', 'skinny','seasonal', 'top', 'frock']
-  const range=[500, 10000]
+  const types = ["t-shirt", "dress", "skinny", "seasonal", "top", "frock"];
+  const range = [500, 10000];
+
+  // let isTypeSelected = false;
 
   const [sort, setSort] = useState("select");
   const [filterSizeList, setFilterSizeList] = useState([]);
   const [filterTypeList, setFilterTypeList] = useState([]);
 
-  // Sort filter
-  
-  
-  let sortType;
-  let sorted;
-
+  // Sort filter -----------------------------
   const handleSortChange = (event) => {
-    // setSort(event.target.value);
-    sortType = event.target.value;
+    const sortType = event.target.value;
     // console.log(sortType);
     setSort(sortType);
-    switch (sortType) {
-      case "priceAsc":
-        sorted = products.sort((a, b) => {
-          return a.price - b.price;
-        });
-        // console.log(products);
-
-        break;
-      case "priceDesc":
-        sorted = products.sort((a, b) => {
-          return b.price - a.price;
-        });
-        // console.log(products);
-
-        break;
-
-      default:
-        break;
-    }
-    setFilteredProducts([...sorted]);
   };
   // ------------ End of Sort filter --------------
 
-  //Size filter
-  let sizeList = filterSizeList;
+  //Type filter ----------------------
+
+  const handleTypeOnChange = (e) => {
+    let typeList = [...filterTypeList];
+    // console.log('handleTypeOnChange')
+    //getting selected types
+    if (e.target.checked) {
+      //when user select a type
+      typeList.push(e.target.name.toLowerCase());
+      setFilterTypeList(typeList);
+      // console.log('checked ' , typeList)
+      //initialize the list after deselecting all and selecting one
+      if (typeList.length > types.length) {
+        typeList = [];
+        typeList.push(e.target.name.toLowerCase());
+        setFilterTypeList(typeList);
+      }
+    } else {
+      //when user deselect a type
+      //removing the selected item from filterList arr
+      const index = typeList.indexOf(e.target.name.toLowerCase());
+      if (index > -1) {
+        typeList.splice(index, 1);
+        setFilterTypeList(typeList);
+        // console.log('Unchecked ' , typeList)
+      }
+      //when user deselect all types
+      if (typeList.length === 0) {
+        typeList = [...types];
+        setFilterTypeList(typeList);
+      }
+    }
+    // console.log(typeList);
+  };
+
+  const typeFilter = (typeList, products) => {
+    console.log("type filter");
+    const filteredProductsSet = new Set();
+    products?.forEach((product) => {
+      //checking product for user selected type
+      typeList.forEach((sType) => {
+        if (product.productType.includes(sType)) {
+          filteredProductsSet.add(product);
+        }
+      });
+    });
+    return filteredProductsSet;
+  };
+
+  // -------------- End of Type filter -------------
+
+  //Size filter -------------------------------
   const handleSizeOnChange = (e) => {
+    let sizeList = [...filterSizeList];
     //getting selected sizes
     if (e.target.checked) {
       //when user select a size
@@ -77,14 +108,13 @@ export default function ProductFilters({products, originalProducts,  setFiltered
       }
     }
     // console.log(sizeList);
-    handleSizeFilter(sizeList);
+    // console.log(sizeList);
   };
 
-  //getting filtered product list
-  const handleSizeFilter = (sizeList) => {
-    // console.log(sizeList);
+  // //getting size filtered product list
+  const sizeFilter = (sizeList, products) => {
     const filteredProductsSet = new Set();
-    originalProducts.forEach((product) => {
+    products?.forEach((product) => {
       //checking product for user selected size
       sizeList.forEach((sSize) => {
         if (product.size.includes(sSize)) {
@@ -92,74 +122,80 @@ export default function ProductFilters({products, originalProducts,  setFiltered
         }
       });
     });
-
-    setFilteredProducts(Array.from(filteredProductsSet));
-    //  console.log(Array.from(filteredProductsSet));
+    return filteredProductsSet;
   };
   // ----------------- End of size filter---------------------
+  // console.log('Type selected', filterTypeList);
+  useEffect(() => {
+    // console.log('Type selected', filterTypeList);
+    const filteredProducts = () => {
+      const isTypeSelected = !(
+        filterTypeList.length === 0 || filterTypeList.length === types.length
+      );
+      const isSizeSelected = !(
+        filterSizeList.length === 0 || filterSizeList.length === sizes.length
+      );
 
-  //Type filter
- 
-  let typeList = filterTypeList;
-  const handleTypeOnChange = (e) => {
-    //getting selected types
-    if (e.target.checked) {
-      //when user select a type
-      typeList.push(e.target.name.toLowerCase());
-      setFilterTypeList(typeList);
-      //initialize the list after deselecting and selecting
-      if (typeList.length > types.length) {
-        typeList = [];
-        typeList.push(e.target.name.toLowerCase());
-        setFilterTypeList(typeList);
+      if (isTypeSelected && isSizeSelected) {
+        //size and type filter applied
+        const result1 = typeFilter(filterTypeList, originalProducts);
+        const result = sizeFilter(filterSizeList, result1);
+        return result;
+      } else if (isTypeSelected) {
+        //type filter applied
+        const result = typeFilter(filterTypeList, originalProducts);
+        return result;
+      } else if (isSizeSelected) {
+        //size filter applied
+        const result = sizeFilter(filterSizeList, originalProducts);
+        return result;
+      } else {
+        //size or type filter not applied
+        return originalProducts;
       }
-    } else {
-      //when user deselect a type
-      //removing the selected item from filterList arr
-      const index = typeList.indexOf(e.target.name.toLowerCase());
-      if (index > -1) {
-        typeList.splice(index, 1);
-        setFilterTypeList(typeList);
-      }
-      //when user deselect all types
-      if (typeList.length === 0) {
-        typeList = [...types];
-        setFilterTypeList(typeList);
-      }
+    };
+    const filterProductsArray = Array.from(filteredProducts());
+
+    let finalProductsArray = [];
+    switch (sort) {
+      case "priceAsc":
+        finalProductsArray = filterProductsArray.sort((a, b) => {
+          return a.price - b.price;
+        });
+        // console.log('priceAsc');
+        break;
+      case "priceDesc":
+        finalProductsArray = filterProductsArray.sort((a, b) => {
+          return b.price - a.price;
+        });
+        // console.log('priceDesc');
+        break;
+      default:
+        finalProductsArray = filterProductsArray;
+        break;
     }
-    console.log(typeList);
-    handleTypeFilter(typeList);
-  };
 
-  //getting filtered product list
-  const handleTypeFilter = (typeList) => {
-    // console.log(originalProducts);
-    const filteredProductsSet = new Set();
-    originalProducts.forEach((product) => {
-      //checking product for user selected type
-      typeList.forEach((sType) => {
-        if (product.productType.includes(sType)) {
-          filteredProductsSet.add(product);
-        }
-      });
-    });
-
-    setFilteredProducts(Array.from(filteredProductsSet));
-    //  console.log(Array.from(filteredProductsSet));
-  };
-  // -------------- End of Type filter -------------
+    setFilteredProducts(finalProductsArray);
+  }, [sort, filterSizeList, filterTypeList]);
 
   return (
-    <Box sx={{padding:'30px', textAlign:'left'}}>
-      <Typography variant={'h6'} sx={{py:1}}>SEARCH WITH FILTERS</Typography>
+    <Box sx={{ padding: "30px", textAlign: "left" }}>
+      <Typography variant={"h6"} sx={{ py: 1 }}>
+        SEARCH WITH FILTERS
+      </Typography>
       <hr />
-      <SortFilter sort={sort} handleSortChange={handleSortChange}/>
+      <SortFilter sort={sort} handleSortChange={handleSortChange} />
       <hr />
-      <DressTypeFilter types={types} handleTypeOnChange={handleTypeOnChange}/>
+      <DressTypeFilter types={types} handleTypeOnChange={handleTypeOnChange} />
       <hr />
-      <SizeFilter sizes={sizes} handleSizeOnChange={handleSizeOnChange}/>
+      <SizeFilter sizes={sizes} handleSizeOnChange={handleSizeOnChange} />
       <hr />
-      <PriceFilter range={range} products={products} originalProducts={originalProducts} setFilteredProducts={setFilteredProducts}/>
+      <PriceFilter
+        range={range}
+        products={products}
+        originalProducts={originalProducts}
+        setFilteredProducts={setFilteredProducts}
+      />
     </Box>
   );
 }
