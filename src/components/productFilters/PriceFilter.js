@@ -3,40 +3,19 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { Grid, Typography } from "@mui/material";
 
-// function valuetext(value) {
-//   // console.log(value);
-
-//   return `${value}°C`;
-// }
 
 export default function ProductPriceFilter({
-  range,
-  products,
-  originalProducts,
-  setFilteredProducts,
+  priceRange,
+  setPriceRange
 }) {
-  // const valueRange=[500, 10000];
-  const displayProducts=[...originalProducts];
-  const [priceRange, setPriceRange] = React.useState(range);
-
-  const handleChange = (event, newRange) => {
+  
+  const handleChange = (e, newRange) => {
     setPriceRange(newRange);
-    console.log(newRange);
-    productFilter(newRange);
+    // console.log(newRange);
+   
   };
 
-  const productFilter = (priceRange) => {
-    const filteredProducts = [];
-    displayProducts.map((val) => {
-      if (priceRange[0] <= val.price &  priceRange[1]>=val.price) {
-      filteredProducts.push(val);
-      }
-      // console.log(filteredProducts);
-      
-      return '';
-    });
-    setFilteredProducts(filteredProducts);
-  };
+  
 
   return (
     <Box sx={{ width: "auto" }}>
@@ -55,7 +34,7 @@ export default function ProductPriceFilter({
         value={priceRange}
         onChange={handleChange}
         valueLabelDisplay="auto"
-        // getAriaValueText={valuetext}
+      
       />
     </Box>
   );

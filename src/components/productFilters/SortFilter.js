@@ -6,39 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function SortFilter({ sort, handleSortChange}) {
-  // const [sort, setSort] = React.useState("select");
-  
-  // let sortType;
-  // let sorted;
-
-  // const handleChange = (event) => {
-  //   // setSort(event.target.value);
-  //   sortType = event.target.value;
-  //   // console.log(sortType);
-  //   setSort(sortType);
-  //   switch (sortType) {
-  //     case "priceAsc":
-  //       sorted = products.sort((a, b) => {
-  //         return a.price - b.price;
-  //       });
-  //       // console.log(products);
-
-  //       break;
-  //     case "priceDesc":
-  //       sorted = products.sort((a, b) => {
-  //         return b.price - a.price;
-  //       });
-  //       // console.log(products);
-
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  //   setFilteredProducts([...sorted]);
-  // };
-  // console.log(products);
-
+ 
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -50,7 +18,6 @@ export default function SortFilter({ sort, handleSortChange}) {
           label="Sort"
           onChange={handleSortChange}
         >
-          {/* <MenuItem value={'dateAsc'}>DATE ASCENDING</MenuItem> */}
           <MenuItem value={"select"}>Select</MenuItem>
           <MenuItem value={"priceAsc"}>PRICE ASCENDING</MenuItem>
           <MenuItem value={"priceDesc"}>PRICE DESCENDING</MenuItem>

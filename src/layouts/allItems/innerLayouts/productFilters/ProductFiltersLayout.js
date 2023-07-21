@@ -19,6 +19,7 @@ export default function ProductFilters({
   const [sort, setSort] = useState("select");
   const [filterSizeList, setFilterSizeList] = useState([]);
   const [filterTypeList, setFilterTypeList] = useState([]);
+  const [priceRange, setPriceRange] = React.useState(range);
 
   // Sort filter -----------------------------
   const handleSortChange = (event) => {
@@ -125,6 +126,7 @@ export default function ProductFilters({
     return filteredProductsSet;
   };
   // ----------------- End of size filter---------------------
+  
   // console.log('Type selected', filterTypeList);
   useEffect(() => {
     // console.log('Type selected', filterTypeList);
@@ -175,8 +177,16 @@ export default function ProductFilters({
         break;
     }
 
-    setFilteredProducts(finalProductsArray);
-  }, [sort, filterSizeList, filterTypeList]);
+    const priceFilteredProducts = [];
+    finalProductsArray.map((val) => {
+      if (priceRange[0] <= val.price &  priceRange[1]>=val.price) {
+        priceFilteredProducts.push(val);
+      }
+      return '';
+    });
+
+    setFilteredProducts(priceFilteredProducts);
+  }, [sort, filterSizeList, filterTypeList, priceRange]);
 
   return (
     <Box sx={{ padding: "30px", textAlign: "left" }}>
@@ -195,6 +205,8 @@ export default function ProductFilters({
         products={products}
         originalProducts={originalProducts}
         setFilteredProducts={setFilteredProducts}
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
       />
     </Box>
   );
